@@ -1,0 +1,84 @@
+body {
+    background-color: #0b3c8a;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.info {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(8, 95px);
+    gap: 10px;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+/* CARTA */
+.carta {
+    width: 95px;
+    height: 95px;
+    perspective: 1000px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* CONTENEDOR INTERNO */
+.carta-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.carta.volteada .carta-inner {
+    transform: rotateY(180deg);
+}
+
+/* CARAS */
+.frente,
+.atras {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 6px;
+    text-align: center;
+}
+
+/* PARTE TRASERA (AJEDREZ) */
+.frente {
+    background-color: white;
+    background-image:
+        linear-gradient(45deg, #000 25%, transparent 25%),
+        linear-gradient(-45deg, #000 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #000 75%),
+        linear-gradient(-45deg, transparent 75%, #000 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* PARTE FRONTAL */
+.atras {
+    background-color: white;
+    color: #0b3c8a;
+    transform: rotateY(180deg);
+}
